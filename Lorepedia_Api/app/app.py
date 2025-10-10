@@ -5,25 +5,23 @@ import psycopg2
 
 app=Flask(__name__)
 
-
-
-@app.route('/')
+@app.route('/login')
 def login():
-
     return render_template('login.html')
 
-@app.route('/home')
+@app.route('/')
 def index():
     return render_template('lorepedia/index.html')
 
+@app.route('/personajes')
+def personajes():
+    return render_template('lorepedia/Paginas/Personajes.html')
+
 
 if __name__=='__main__':
-    app.run(debug=True, port=5000)
-
-
-
-# para leer los archivos HTML, CSS Y JS 
-# que esten dentro de /static y /templates :D
-sv.watch('**/*.html')
-sv.watch('**/*.css')
-sv.watch('**/*.js')
+    # Configura Livereload para Flask
+    server = sv(app.wsgi_app)
+    server.watch('**/*.html')
+    server.watch('**/*.css')
+    server.watch('**/*.js')
+    server.serve(port=5000, debug=True)
