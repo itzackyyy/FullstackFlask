@@ -1,0 +1,166 @@
+/* ====== Base ====== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  background-color: #0f0f12;   /* Fondo oscuro */
+  color: #e9eef2;              /* Texto claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* ====== Layout ====== */
+.container {
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+  padding: 32px 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ====== Logo ====== */
+.logo {
+  width: 240px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto 18px auto;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+}
+
+/* ====== Texto ====== */
+.tagline {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #cfd9e1;
+  margin: 0 auto 22px auto;
+}
+
+/* ====== Navegación ====== */
+.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f0f12;
+  background-color: #19e0ff;              /* acento cian */
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+  background-color: #00c8ea;
+  box-shadow: 0 8px 18px rgba(0, 200, 234, 0.25);
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 18px;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ====== Botón de Música ====== */
+
+/* ===== Modal música ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  max-width: 520px;
+  background: #17171b;
+  color: #e9eef2;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  text-align: center;
+}
+
+.modal h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+}
+
+.modal p {
+  margin: 0 0 16px 0;
+  color: #cfd9e1;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.btn-secondary {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: transparent;
+  color: #e9eef2;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.modal-note {
+  display: block;
+  color: #aab6c2;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}

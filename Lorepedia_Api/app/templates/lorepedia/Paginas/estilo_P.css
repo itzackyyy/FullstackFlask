@@ -1,0 +1,119 @@
+/* ====== Base ====== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0f0f12;   /* Fondo oscuro */
+  color: #e9eef2;              /* Texto claro */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+/* ====== Layout ====== */
+.container {
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+  padding: 32px 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ====== Navegación ====== */
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f0f12;
+  background-color: #19e0ff;  /* acento cian */
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+  background-color: #00c8ea;
+  box-shadow: 0 8px 18px rgba(0, 200, 234, 0.25);
+  outline: none;
+}
+
+/* ====== Título ====== */
+.page-title {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: #ffcc00;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cfd9e1;
+  margin-bottom: 24px;
+}
+
+/* ====== Lista de Personajes ====== */
+.characters-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.characters-list li {
+  margin: 0;
+}
+
+.char-link {
+  display: block;
+  padding: 14px 20px;
+  background: #2a2a2f;
+  color: #e9eef2;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.char-link:hover,
+.char-link:focus-visible {
+  background: #19e0ff;
+  color: #0f0f12;
+  transform: translateY(-2px);
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 16px;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+}
