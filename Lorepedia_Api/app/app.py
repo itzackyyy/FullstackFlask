@@ -5,15 +5,19 @@ import psycopg2
 
 app=Flask(__name__)
 
-@app.route('/login')
+@app.route('/login')#endpoint login
 def login():
-    return render_template('login.html')
+    return render_template('lorepedia/iniciarSesion.html')
 
-@app.route('/')
+@app.route('/registrar')
+def registrar():
+    return render_template('lorepedia/crearSesion.html')
+
+@app.route('/') #endpoint home
 def index():
     return render_template('lorepedia/index.html')
 
-@app.route('/personajes')
+@app.route('/personajes') #endpoint personajes
 def personajes():
     return render_template('lorepedia/Paginas/Personajes.html')
 
