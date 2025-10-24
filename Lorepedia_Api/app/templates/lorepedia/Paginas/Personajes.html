@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personajes - Lorepedia</title>
-  <!-- estilos exclusivos de esta página -->
-  <link rel="stylesheet" href="estilo_P.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes - Lorepedia</title>
+    <link rel="stylesheet" href="../../../static/css/estilo.css"> 
+    
 </head>
 <body>
-  <div class="container">
-    <!-- Botón Home -->
-    <nav class="nav">
-      <a class="btn" href="/">🏠 Home</a>
-    </nav>
+    <div class="container">
+        <nav class="nav">
+            <a class="btn" href="/">🏠 Home</a>
+        </nav>
 
-    <h1 class="page-title">Lista de Personajes</h1>
-    <p class="tagline">Explora los distintos personajes disponibles en Lorepedia.</p>
+        <h1 class="page-title">Lista de Personajes ✨</h1>
+        <p class="tagline">Explora los distintos personajes disponibles en Lorepedia. Utiliza el buscador para encontrar rápidamente a quien buscas.</p>
 
-    <!-- Lista de personajes -->
-    <ul class="characters-list">
-      <li><a href="../Personajes/Dante.html" class="char-link">Dante</a></li>
-      <li><a href="../Personajes/Gerson_Boom.html" class="char-link">Gerson Boom</a></li>
-      <li><a href="../Personajes/Kris_Dreemur.html" class="char-link">Kris Dreemur</a></li>
-      <li><a href="../Personajes/Ralsei.html" class="char-link">Ralsei</a></li>
-      <li><a href="../Personajes/Susie.html" class="char-link">Susie</a></li>
-      <li><a href="../Personajes/Vergil.html" class="char-link">Vergil</a></li>
-    </ul>
-  </div>
+        <div class="search-bar">
+            <input type="text" id="character-search" class="search-input" placeholder="Buscar personaje por nombre...">
+        </div>
+
+        <ul class="characters-list" id="characters-list">
+            <li><a href="../Personajes/Dante.html" class="char-link">Dante</a></li>
+            <li><a href="../Personajes/Gerson_Boom.html" class="char-link">Gerson Boom</a></li>
+            <li><a href="../Personajes/Kris_Dreemur.html" class="char-link">Kris Dreemur</a></li>
+            <li><a href="../Personajes/Ralsei.html" class="char-link">Ralsei</a></li>
+            <li><a href="../Personajes/Susie.html" class="char-link">Susie</a></li>
+            <li><a href="../Personajes/Vergil.html" class="char-link">Vergil</a></li>
+        </ul>
+        
+        <p id="no-results" style="display: none;">No se encontraron personajes con ese nombre. 😥</p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/filtrado_P.js') }}"></script> 
 </body>
 </html>

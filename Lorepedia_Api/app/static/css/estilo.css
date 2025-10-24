@@ -1,4 +1,4 @@
-/* ====== Base ====== */
+/* ====== Base (Común a todas las páginas) ====== */
 * {
   box-sizing: border-box;
 }
@@ -9,193 +9,255 @@ html, body {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  background-color: #0f0f12;   /* Fondo oscuro */
-  color: #e9eef2;              /* Texto claro */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0a0a0c; /* Fondo más oscuro */
+  color: #e9eef2;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 24px;
+  /* Por defecto, alineamos arriba para páginas con scroll (como Personajes) */
+  align-items: flex-start; 
+  padding: 40px 24px;
 }
 
-/* ====== Layout ====== */
+/* ====== Layout (Común a todas las páginas) ====== */
 .container {
   text-align: center;
-  max-width: 720px;
+  max-width: 600px;
   width: 100%;
-  padding: 32px 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 40px 30px;
+  background: rgba(18, 18, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
 }
 
-/* ====== Logo ====== */
-.logo {
-  width: 240px;
-  max-width: 90%;
-  height: auto;
-  display: block;
-  margin: 0 auto 18px auto;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
-}
-
-/* ====== Texto ====== */
-.tagline {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #cfd9e1;
-  margin: 0 auto 22px auto;
-}
-
-/* ====== Navegación ====== */
+/* ====== Navegación y Botón Home (Común a todas las páginas) ====== */
 .nav {
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 8px;
+  justify-content: flex-start;
+  margin-bottom: 24px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
   text-decoration: none;
   font-weight: 600;
   color: #0f0f12;
-  background-color: #19e0ff;              /* acento cian */
-  border: 1px solid rgba(0,0,0,0.1);
+  background-color: #19e0ff; /* acento cian */
+  border: none;
   border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn:hover,
 .btn:focus-visible {
   transform: translateY(-2px);
   background-color: #00c8ea;
-  box-shadow: 0 8px 18px rgba(0, 200, 234, 0.25);
+  box-shadow: 0 6px 15px rgba(0, 200, 234, 0.4);
   outline: none;
 }
 
-.btn:active {
-  transform: translateY(0);
+/* ====== Título y Subtítulo (Común a todas las páginas) ====== */
+.page-title {
+  font-size: 2.2rem;
+  margin: 10px 0 8px;
+  color: #ffc107;
 }
 
-/* ====== Responsivo ====== */
-@media (max-width: 480px) {
-  .container {
-    padding: 24px 18px;
+.tagline {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #b0b8c0;
+  margin-bottom: 30px;
+}
+
+
+/* ======================================= */
+/* ====== ESTILOS ESPECÍFICOS: Personajes.html (Lista y Búsqueda) ====== */
+/* ======================================= */
+
+.search-bar {
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background-color: #1c1c1f;
+  color: #e9eef2;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input::placeholder {
+  color: #7b8593;
+}
+
+.search-input:focus {
+  border-color: #19e0ff;
+  box-shadow: 0 0 0 3px rgba(25, 224, 255, 0.3);
+  outline: none;
+}
+
+.characters-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.characters-list li {
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.char-link {
+  display: block;
+  padding: 16px 20px;
+  background: #28282e;
+  color: #e9eef2;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.char-link:hover,
+.char-link:focus-visible {
+  background: #19e0ff;
+  color: #0a0a0c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(25, 224, 255, 0.2);
+}
+
+#no-results {
+  margin-top: 20px;
+  font-style: italic;
+  color: #ff6b6b;
+  font-size: 1.1rem;
+  display: none;
+}
+
+/* ======================================= */
+/* ====== ESTILOS ESPECÍFICOS: index.html (Página Principal) ====== */
+/* ======================================= */
+
+/* Anula la alineación flex-start y centra el contenido en la página de inicio */
+body.index-page {
+    align-items: center; 
+    padding: 24px; 
+}
+
+/* Contenedor más estrecho y con más espacio interno para la landing page */
+body.index-page .container {
+    max-width: 450px; 
+    padding: 50px 30px; 
+}
+
+/* Estilo del Logo */
+.logo-image {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+/* Título LOREPEDIA */
+.main-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #19e0ff; 
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Descripción de la Página Principal */
+.tagline.main-description {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+/* Contenedor de Botones de Navegación */
+.main-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Estilo del Reproductor de Música */
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #b0b8c0;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.music-controls progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 8px;
+    border: none;
+    border-radius: 4px;
+    margin: 0 10px;
+    background-color: #333;
+}
+
+.btn-music {
+    background-color: #28282e;
+    color: #e9eef2;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.btn-music:hover {
+    background-color: #383840;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* ====== Responsivo (Común) ====== */
+@media (max-width: 550px) {
+  body {
+    padding: 24px 16px;
   }
+  
+  .container {
+    padding: 30px 20px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
   .tagline {
     font-size: 1rem;
   }
-  .btn {
-    width: 100%;
-    text-align: center;
+  
+  .search-input {
+      padding: 12px 16px;
   }
-}
-
-/* ====== Botón de Música ====== */
-
-/* ===== Modal música ===== */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: grid;
-  place-items: center;
-  padding: 16px;
-  z-index: 1000;
-}
-
-.modal {
-  width: 100%;
-  max-width: 520px;
-  background: #17171b;
-  color: #e9eef2;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-  text-align: center;
-}
-
-.modal h2 {
-  margin: 0 0 8px 0;
-  font-size: 1.25rem;
-}
-
-.modal p {
-  margin: 0 0 16px 0;
-  color: #cfd9e1;
-}
-
-.modal-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 6px;
-  margin-bottom: 8px;
-}
-
-.btn-secondary {
-  padding: 10px 14px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  background: transparent;
-  color: #e9eef2;
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-.btn-secondary:hover,
-.btn-secondary:focus-visible {
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,0.5);
-}
-
-.modal-note {
-  display: block;
-  color: #aab6c2;
-  font-size: 0.85rem;
-  margin-top: 4px;
-}
-
-/* ====== Modal Música: Ajustes del Checkbox ====== */
-.modal-option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 12px 0;
-    font-size: 0.9rem;
-}
-
-.modal-option input[type="checkbox"] {
-    /* Oculta la apariencia nativa para control personalizado */
-    appearance: none;
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: transparent;
-    position: relative;
-    top: -1px; /* Ajuste fino */
-}
-
-.modal-option input[type="checkbox"]:checked {
-    background-color: #19e0ff; /* Acento cian cuando está marcado */
-    border-color: #19e0ff;
-}
-
-.modal-option label {
-    cursor: pointer;
-    user-select: none;
-    margin-left: 6px;
-    color: #cfd9e1; /* Texto secundario */
 }
