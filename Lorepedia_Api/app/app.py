@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, Response, session, jsonify
 from livereload import Server as sv
 import pymysql as sqlxd
-import pytest as pt
 
 
 app=Flask(__name__)
