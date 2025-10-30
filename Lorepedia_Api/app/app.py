@@ -11,7 +11,7 @@ def login():
     return render_template('lorepedia/iniciarSesion.html')
 
 
-@app.route('/registrar')#endpoint para registrar
+@app.route('/registrar', methods=['POST'])#endpoint para registrar, post porque estamos enviando información
 def registrar():
     return render_template('lorepedia/crearSesion.html')
 
