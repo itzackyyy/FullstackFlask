@@ -3,12 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personajes</title>
+    <title>Personajes - Lorepedia</title>
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/personajes.css') }}"> 
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Recursos Principal/imagenes/Lorepedia Logo 3.png') }}">
     
+    <style>
+        .tabla-personajes {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: white; /* Asumiendo fondo oscuro */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+        }
+        .tabla-personajes th, .tabla-personajes td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .btn-eliminar {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-agregar {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,20 +48,45 @@
         </nav>
 
         <h1 class="page-title">Lista de Personajes ✨</h1>
-        <p class="tagline">Explora los distintos personajes disponibles en Lorepedia. Utiliza el buscador para encontrar rápidamente a quien buscas.</p>
+        <p class="tagline">Gestiona la base de datos de Lorepedia.</p>
+
+        <div style="text-align: center;">
+            <a href="{{ url_for('agregarPersonaje') }}" class="btn-agregar">
+                ➕ Agregar Nuevo Personaje
+            </a>
+        </div>
 
         <div class="search-bar">
             <input type="text" id="character-search" class="search-input" placeholder="Buscar personaje por nombre...">
         </div>
 
-        <ul class="characters-list" id="characters-list">
-            <li><a href="../Personajes/Dante.html" class="char-link">Dante</a></li>
-            <li><a href="../Personajes/Gerson_Boom.html" class="char-link">Gerson Boom</a></li>
-            <li><a href="../Personajes/Kris_Dreemur.html" class="char-link">Kris Dreemur</a></li>
-            <li><a href="../Personajes/Ralsei.html" class="char-link">Ralsei</a></li>
-            <li><a href="../Personajes/Susie.html" class="char-link">Susie</a></li>
-            <li><a href="../Personajes/Vergil.html" class="char-link">Vergil</a></li>
-        </ul>
+        <table class="tabla-personajes">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="characters-list"> 
+                {% for p in personajes %}
+                <tr>
+                    <td><strong>{{ p[1] }}</strong></td>
+                    <td>{{ p[2] }}</td>
+                    <td>
+                        <form action="{{ url_for('eliminar_personaje') }}" method="POST" onsubmit="return confirm('¿Seguro que quieres borrar a {{ p[1] }}?');">
+                            <input type="hidden" name="id_personaje" value="{{ p[0] }}">
+                            <button type="submit" class="btn-eliminar">🗑️</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" style="text-align: center;">No hay personajes registrados. ¡Agrega el primero!</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         
         <p id="no-results" style="display: none;">No se encontraron personajes con ese nombre. 😥</p>
     </div>
@@ -38,5 +94,3 @@
     <script src="{{ url_for('static', filename='js/filtrado_P.js') }}"></script> 
 </body>
 </html>
-
-

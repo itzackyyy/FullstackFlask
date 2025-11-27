@@ -1,0 +1,22 @@
+{% extends "Personajes.html" %}
+
+{% block title %}
+Agregar Personajes
+{% endblock %}
+{% block content %}
+
+<section class="section">
+    <div class="columns">
+        <h3 class="tituloAgregarPersonaje">Agregar Personaje</h3>
+        <form action="{{url_for('/agregarPersonaje')}}" method="post">
+            <label for="nombre">Nombre:</label>
+            <input required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+            <label for="descripcion">Descripcion:</label>
+            <input required type="text" class="input" placeholder="Descripcion" name="descripcion" id="descripcion">
+            <button type="submit" class="boton-submit">Subir</button>
+            <a href="{{url_for('/personajes')}}" class="boton-volver">Regresar</a>
+
+
+        </form>
+    </div>
+</section>
