@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, Response, session, jsonify
+from flask import Flask, render_template, redirect, request
 from flask_restful import Api, Resource
 from livereload import Server as sv
 
@@ -19,13 +19,13 @@ def registrar():
 
 
 
-
-@app.route('/') #endpoint home
-def index():
-    return render_template('lorepedia/index.html')
 #==================
 #ZONA ENDPOINT HOME
 #==================
+@app.route('/') #endpoint home
+def index():
+    return render_template('lorepedia/index.html')
+
 
 
 
@@ -42,7 +42,6 @@ def index():
 #==================
 @app.route('/personajes') #endpoint personajes
 def personajes():
-
     lista_personajes = cp.obtener_personaje()
     return render_template('lorepedia/Paginas/Personajes.html', personajes=lista_personajes) #con esto hacemo trabajar al jinja
 
@@ -66,24 +65,27 @@ def agregarPersonaje():
 
 
 
-
 @app.route('/guardarPersonaje', methods=['POST'])
 def guardarPersonaje():
     #se obtiene del formulario y desde el id "nombre" y "descripcion" del html logicamente
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
-
     cp.insertar_personaje(nombre, descripcion)
-
     return redirect('/personajes') #volvemos a la pagina de personajes
     
+
+
+
+
+
+
+
 
 
 @app.route('/eliminarPersonaje', methods=['POST'])
 def eliminarPersonaje():
     id_personaje = request.form['id_personaje']
     cp.eliminar_personaje(id_personaje)
-
     return redirect('/personajes')
 
 

@@ -6,7 +6,7 @@ def obtener_conexion():
         host='localhost',
         user='root',
         password='',
-        db='personajes_db') #nombre base de datos final (la de ahora es test)
+        db='personajes_db')
 
 
 

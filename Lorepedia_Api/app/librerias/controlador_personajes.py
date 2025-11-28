@@ -5,8 +5,8 @@ from librerias import bd
 
 def insertar_personaje(nombre, descripcion):
     conexion = bd.obtener_conexion()
-    with conexion.cursor as cursor:
-        cursor.execute("INSERT INTO PERSONAJES (nombre, descripcion) values (%s, %s, %s)",
+    with conexion.cursor() as cursor:
+        cursor.execute("INSERT INTO PERSONAJES (nombre, descripcion) values (%s, %s)",
                        (nombre, descripcion))
         conexion .commit()
         conexion.close()

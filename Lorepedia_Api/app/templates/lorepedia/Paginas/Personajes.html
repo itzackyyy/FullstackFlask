@@ -74,7 +74,7 @@
                     <td><strong>{{ p[1] }}</strong></td>
                     <td>{{ p[2] }}</td>
                     <td>
-                        <form action="{{ url_for('eliminar_personaje') }}" method="POST" onsubmit="return confirm('¿Seguro que quieres borrar a {{ p[1] }}?');">
+                        <form action="{{ url_for('eliminarPersonaje') }}" method="POST" onsubmit="return confirm('¿Seguro que quieres borrar a {{ p[1] }}?');">
                             <input type="hidden" name="id_personaje" value="{{ p[0] }}">
                             <button type="submit" class="btn-eliminar">🗑️</button>
                         </form>
