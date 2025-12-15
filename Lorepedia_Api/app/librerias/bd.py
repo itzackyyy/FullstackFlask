@@ -1,32 +1,9 @@
-import pymysql
+# importacion de librerias para soportar MongoDB Community Edition (en este caso xd).
 
+from pymongo import MongoClient
 
-def obtener_conexion():
-    return pymysql.connect(
-        host='localhost',
-        user='root',
-        password='',
-        db='personajes_db')
+def obtener_bd():
+    client = MongoClient('localhost',27017)
 
-
-
-#seccion de prueba de conexion
-"""
-if __name__ == "__main__":
-    try:
-        conexion = obtener_conexion()
-
-
-        with conexion.cursor() as cursor:
-            sql = "SELECT * FROM songs"
-
-            cursor.execute(sql)
-
-            resultado = cursor.fetchall()
-            print(f"Resultados encontrados {resultado}")
-            for fila in resultado:
-                print(fila)
-        conexion.close()
-    except Exception as e:
-        print(f"error xdxd:   {e}")
-"""
+    bd = client['personajes_db']
+    return bd

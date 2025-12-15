@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request
-from flask_restful import Api, Resource
 from livereload import Server as sv
 
 from librerias import controlador_personajes as cp#anular chiste del CP dios tenemos más de 20 años
