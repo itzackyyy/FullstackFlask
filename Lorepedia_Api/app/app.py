@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from livereload import Server as sv
+from librerias import controlador_personajes as cp
 
 app = Flask(__name__)
 
@@ -55,7 +56,20 @@ def guardar_personaje():
         }), 201
     else:
         return jsonify({'error': 'Faltan datos'}), 400
-    
+
+@app.route('/editarPersonaje/<id_personaje', methods=['UPDATE'])
+def editar_personaje(id_personaje):
+    personaje_encontrado = cp.obtener_personaje_id(id_personaje)
+    return jsonify({'mensaje': 'Personaje editado correctamente'}, personaje = personaje_encontrado)
+
+@app.route('/actualizarPersonaje/<id_personaje>', methods=['PUT'])
+def actualizar_personaje(id_personaje):
+    id_personaje = request.form["id_personaje"]
+    nombre = request.form["nombre"]
+    descripcion = request.form["descripcion"]
+    cp.actualizar_personaje(id_personaje, nombre, descripcion)
+    return jsonify({'mensaje': 'Personaje actualizado correctamente'})
+
 # Eliminar personaje
 @app.route('/api/eliminarPjs/<id>', methods=['DELETE'])
 def eliminar_personaje(id):
